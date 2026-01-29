@@ -38,7 +38,7 @@ endif
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-"set background=dark
+set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -58,6 +58,7 @@ set ignorecase		" Do case insensitive matching
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
+set autoindent expandtab tabstop=4 shiftwidth=4
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
