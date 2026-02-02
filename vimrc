@@ -44,9 +44,11 @@ set background=dark
 " reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-filetype plugin indent on
+" Ensure Vim uses filetype plugins
+filetype plugin on
+
+" Enable indentation
+filetype indent on
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -58,10 +60,18 @@ set ignorecase		" Do case insensitive matching
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
-set autoindent expandtab tabstop=4 shiftwidth=4
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+
+" Set the default indentation to 2 spaces for all files
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" Set backspace so it acts more intuitively
+set backspace=indent,eol,start
 
