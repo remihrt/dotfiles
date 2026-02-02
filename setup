@@ -6,6 +6,7 @@ dotfiles=(
     bashrc
     vimrc
     tmux.conf
+    bash_aliases
 )
 
 configfiles=(
