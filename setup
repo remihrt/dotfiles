@@ -3,11 +3,9 @@
 # Description: Link dotfiles to home directory
 
 dotfiles=(
-    bashrc
+    zshrc
     vimrc
     tmux.conf
-    bash_aliases
-    lscolors
 )
 
 configfiles=(
