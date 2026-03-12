@@ -158,3 +158,6 @@ fi
 
 # VIM
 set -o vi
+
+# mise-en-place
+eval "$(mise activate bash)"
