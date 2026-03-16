@@ -30,3 +30,6 @@ export LSCOLORS=ExGxFxdxCxDxDxxbaDecac
 source <(kubectl completion zsh)
 alias k='kubectl'
 alias kgp='kubectl get pods'
+
+# bat
+alias cat="bat"

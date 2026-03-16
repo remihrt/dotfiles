@@ -170,3 +170,6 @@ eval "$(fzf --bash)"
 
 # lazygit
 alias lg="lazygit"
+
+# bat
+alias cat="bat"
