@@ -75,3 +75,8 @@ set expandtab
 " Set backspace so it acts more intuitively
 set backspace=indent,eol,start
 
+" Highlight trailing whitespace in all files
+autocmd BufRead,BufNewFile * match Error /\s\+$/
+
+" Enable auto-indentation
+set autoindent
