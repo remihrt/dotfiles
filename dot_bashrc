@@ -87,11 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -156,8 +151,9 @@ if [[ "$TERM" == "xterm" ]]; then
     PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }precmd"
 fi
 
-# vim
+# vim / neovim
 set -o vi
+alias v="nvim"
 
 # mise-en-place
 eval "$(mise activate bash)"
@@ -173,3 +169,16 @@ alias lg="lazygit"
 
 # bat
 alias cat="bat"
+
+# lsd
+if command -v lsd > /dev/null ; then
+  alias ls="lsd"
+  alias ll="ls -lgh"
+  alias la='ls -lathr'
+  alias lla='ls -lgha'
+  alias lt='ls --tree'
+else
+  alias ll='ls -l'
+  alias la='ls -A'
+  alias l='ls -CF'
+fi

@@ -16,12 +16,6 @@ source <(fzf --zsh)
 # Starship
 eval "$(starship init zsh)"
 
-# ls
-alias ls='ls --color=auto'
-alias ll='ls -Ahl'
-alias la='ls -A'
-alias l='ls -C'
-
 # Colors
 export CLICOLOR=1
 export LSCOLORS=ExGxFxdxCxDxDxxbaDecac
@@ -33,3 +27,20 @@ alias kgp='kubectl get pods'
 
 # bat
 alias cat="bat"
+
+# lsd
+if command -v lsd > /dev/null ; then
+  alias ls="lsd"
+  alias ll="ls -lgh"
+  alias la='ls -lathr'
+  alias lla='ls -lgha'
+  alias lt='ls --tree'
+else
+  alias ll='ls -l'
+  alias la='ls -A'
+  alias l='ls -CF'
+fi
+
+# vim / neovim
+set -o vi
+alias v="nvim"
