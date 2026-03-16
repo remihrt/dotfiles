@@ -161,3 +161,6 @@ set -o vi
 
 # mise-en-place
 eval "$(mise activate bash)"
+
+# Starship
+eval "$(starship init bash)"
