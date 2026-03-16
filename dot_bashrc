@@ -156,11 +156,17 @@ if [[ "$TERM" == "xterm" ]]; then
     PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }precmd"
 fi
 
-# VIM
+# vim
 set -o vi
 
 # mise-en-place
 eval "$(mise activate bash)"
 
-# Starship
+# starship
 eval "$(starship init bash)"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
+# lazygit
+alias lg="lazygit"
