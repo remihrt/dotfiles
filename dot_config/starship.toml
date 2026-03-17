@@ -42,7 +42,7 @@ style = "bright-black"
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
-disabled = false
+disabled = true
 
 [python]
 format = "[$virtualenv]($style) "
