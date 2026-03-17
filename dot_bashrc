@@ -153,7 +153,9 @@ fi
 
 # vim / neovim
 set -o vi
-alias v="nvim"
+alias v="vi"
+alias vi="vim"
+alias vim="nvim"
 
 # mise-en-place
 eval "$(mise activate bash)"
