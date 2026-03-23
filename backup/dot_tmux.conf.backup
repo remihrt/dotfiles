@@ -61,17 +61,17 @@ bind -r L resize-pane -R 5
 set -g status-position top
 
 # Status bar colors
-set -g status-style 'bg=#13161d fg=#8b949e'
+set -g status-style 'bg=#2b303b fg=#8b949e'
 set -g status-left-length 20
 set -g status-right-length 50
 
 # Status bar content
-set -g status-left '#[fg=#00e68a,bold] #S #[fg=#30363d]│ '
-set -g status-right '#[fg=#30363d]│#[fg=#8b949e] %H:%M #[fg=#30363d]│#[fg=#8b949e] %d-%b-%y '
+set -g status-left ''
+set -g status-right '#[fg=#ffffff]'
 
 # Window status
-setw -g window-status-format ' #I:#W '
-setw -g window-status-current-format '#[fg=#00e68a,bold] #I:#W '
+setw -g window-status-format ' #W '
+setw -g window-status-current-format '#[fg=#ffffff] #W '
 
 # Pane border colors
 set -g pane-border-style 'fg=#30363d'
