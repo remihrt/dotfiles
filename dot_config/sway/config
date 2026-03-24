@@ -33,10 +33,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -211,6 +211,9 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+# Lock
+bindsym $mod+Shift+Backspace exec killall -s SIGUSR1 swayidle && killall -s SIGUSR1 swayidle
+
 #
 # Status Bar:
 #
@@ -229,6 +232,9 @@ bindsym $mod+r mode "resize"
 #     }
 # }
 
+# assign [app_id="foot"] 1
+assign [app_id="app.zen_browser.zen"] 2
+
 include /etc/sway/config.d/*
 
 # foot
@@ -239,3 +245,6 @@ default_border none
 
 # waybar
 exec waybar
+
+exec swaymsg "exec foot tmux"
+exec sleep 0.3s && swaymsg "exec app.zen_browser.zen"
