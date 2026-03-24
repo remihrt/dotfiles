@@ -247,4 +247,4 @@ default_border none
 exec waybar
 
 exec swaymsg "exec foot tmux"
-exec sleep 0.3s && swaymsg "exec app.zen_browser.zen"
+exec sleep 0.3s && swaymsg "exec flatpak run app.zen_browser.zen"

@@ -164,6 +164,8 @@
     "interval": 1,
     "states": {
       "good": 80,
+      "should-unplug": 60,
+      "should-plug": 40,
       "warning": 20,
       "critical": 5
     },

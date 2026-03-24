@@ -135,14 +135,26 @@ button:hover {
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
+#battery.critical:not(.charging),
+#battery.should-unplug:not(.discharging),
+#battery.should-plug:not(.charging)
+{
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+}
+
+#battery.should-unplug:not(.discharging),
+#battery.should-plug:not(.charging)
+{
+    background-color: #ff6700;
 }
 
 #power-profiles-daemon {
