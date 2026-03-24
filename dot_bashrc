@@ -193,3 +193,10 @@ fi
 
 # editor
 export EDITOR="$(which nvim 2> /dev/null || which vi 2> /dev/null || echo /usr/bin/vi)"
+
+# bash-completion
+# Use bash-completion, if available, and avoid double-sourcing
+[[ $PS1 &&
+  ! ${BASH_COMPLETION_VERSINFO:-} &&
+  -f /usr/share/bash-completion/bash_completion ]] &&
+    . /usr/share/bash-completion/bash_completion
