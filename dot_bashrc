@@ -200,3 +200,8 @@ export EDITOR="$(which nvim 2> /dev/null || which vi 2> /dev/null || echo /usr/b
   ! ${BASH_COMPLETION_VERSINFO:-} &&
   -f /usr/share/bash-completion/bash_completion ]] &&
     . /usr/share/bash-completion/bash_completion
+
+# Kubernetes
+source <(kubectl completion zsh)
+alias k='kubectl'
+alias kgp='kubectl get pods'
