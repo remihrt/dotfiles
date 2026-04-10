@@ -202,6 +202,6 @@ export EDITOR="$(which nvim 2> /dev/null || which vi 2> /dev/null || echo /usr/b
     . /usr/share/bash-completion/bash_completion
 
 # Kubernetes
-source <(kubectl completion zsh)
+source <(kubectl completion bash)
 alias k='kubectl'
 alias kgp='kubectl get pods'
