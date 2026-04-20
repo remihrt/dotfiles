@@ -176,12 +176,14 @@ alias lg="lazygit"
 alias cat="bat"
 
 # lsd
-if command -v lsd > /dev/null ; then
-  alias ls="lsd"
-  alias ll="ls -lgh"
-  alias la='ls -lathr'
-  alias lla='ls -lgha'
-  alias lt='ls --tree'
+if command -v eza > /dev/null ; then
+  alias ls='eza'
+  alias l='ls'
+  alias la='l -a'
+  alias ll='eza -l --group-directories-first --icons=auto'
+  alias lla='ll -a'
+  alias lt='eza --tree --level=2 --long --icons --git'
+  alias lta='lt -a'
 else
   alias ll='ls -l'
   alias la='ls -A'
@@ -202,6 +204,8 @@ export EDITOR="$(which nvim 2> /dev/null || which vi 2> /dev/null || echo /usr/b
     . /usr/share/bash-completion/bash_completion
 
 # Kubernetes
-source <(kubectl completion bash)
-alias k='kubectl'
-alias kgp='kubectl get pods'
+if command -v kubectl > /dev/null; then
+  source <(kubectl completion bash)
+  alias k='kubectl'
+  alias kgp='kubectl get pods'
+fi
