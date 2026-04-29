@@ -68,7 +68,7 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+  xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -194,7 +194,11 @@ fi
 # alias zen="flatpak run app.zen_browser.zen"
 
 # editor
-export EDITOR="$(which nvim 2> /dev/null || which vi 2> /dev/null || echo /usr/bin/vi)"
+if command -v nvim > /dev/null; then
+  export EDITOR="nvim"
+else
+  export EDITOR="vi"
+fi
 
 # bash-completion
 # Use bash-completion, if available, and avoid double-sourcing
