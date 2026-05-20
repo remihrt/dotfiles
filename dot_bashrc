@@ -213,3 +213,8 @@ if command -v kubectl > /dev/null; then
   alias k='kubectl'
   alias kgp='kubectl get pods'
 fi
+
+# tmux
+if command -v tmux > /dev/null; then
+  alias ta='tmux attach || tmux new -s Work'
+fi
