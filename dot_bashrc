@@ -216,7 +216,7 @@ fi
 
 # tmux
 if command -v tmux > /dev/null; then
-  ta() { tmux attach || tmux new -s ${HOSTNAME}; }
+  ta() { tmux attach || tmux new ; }
   # if not in tmux open a session or attach to existing one
   if [ -z "$TMUX" ]; then
     ta
