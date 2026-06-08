@@ -1,5 +1,6 @@
 # PATH
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # History
 HISTFILE="$HOME/.zsh_history"
