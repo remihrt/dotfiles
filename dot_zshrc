@@ -1,46 +1,103 @@
+# PATH
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000
+SAVEHIST=2000
+
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+
+# Completion
 autoload -Uz compinit
 compinit
 
-# PATH
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/.local/bin"
+# Terminal title
+case "$TERM" in
+  xterm*|rxvt*)
+    preexec() {
+      print -Pn "\e]0;%n@%m: $1\a"
+    }
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+    precmd() {
+      print -Pn "\e]0;%n@%m: %~\a"
+    }
+    ;;
+esac
 
-# Rancher Desktop
-export PATH="$HOME/.rd/bin:$PATH"
+# Vi mode
+bindkey -v
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+# Aliases
+[[ -f "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
 
-# Starship
-eval "$(starship init zsh)"
+# Editor
+if command -v nvim >/dev/null 2>&1; then
+  alias v='nvim'
+  alias vi='nvim'
+  alias vim='nvim'
+  export EDITOR='nvim'
+else
+  alias v='vi'
+  export EDITOR='vi'
+fi
 
-# Colors
-export CLICOLOR=1
-export LSCOLORS=ExGxFxdxCxDxDxxbaDecac
+# mise-en-place
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
-# Kubernetes
-source <(kubectl completion zsh)
-alias k='kubectl'
-alias kgp='kubectl get pods'
+# fzf
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
+
+# lazygit
+if command -v lazygit >/dev/null 2>&1; then
+  alias lg='lazygit'
+fi
 
 # bat
-alias cat="bat"
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+fi
 
-# lsd
-if command -v lsd > /dev/null ; then
-  alias ls="lsd"
-  alias ll="ls -lgh"
-  alias la='ls -lathr'
-  alias lla='ls -lgha'
-  alias lt='ls --tree'
+# eza / ls
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+  alias l='ls'
+  alias la='l -a'
+  alias ll='eza -l --group-directories-first --icons=auto'
+  alias lla='ll -a'
+  alias lt='eza --tree --level=2 --long --icons --git'
+  alias lta='lt -a'
 else
   alias ll='ls -l'
   alias la='ls -A'
   alias l='ls -CF'
 fi
 
-# vim / neovim
-set -o vi
-alias v="nvim"
+# Kubernetes
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+  alias k='kubectl'
+  compdef k=kubectl
+  alias kgp='kubectl get pods'
+fi
+
+# tmux
+if command -v tmux >/dev/null 2>&1; then
+  ta() { tmux attach || tmux new }
+
+  if [[ -z "$TMUX" ]]; then
+    ta
+  fi
+fi
+
+# Starship prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
