@@ -91,9 +91,10 @@ fi
 
 # tmux
 if command -v tmux >/dev/null 2>&1; then
-  ta() { tmux attach || tmux new }
-
-  # if [[ -z "$TMUX" ]]; then
+  alias ta='tmux attach || tmux new'
+  # ta() { tmux attach || tmux new ; }
+  # # if not in tmux open a session or attach to existing one
+  # if [ -z "$TMUX" ]; then
   #   ta
   # fi
 fi
