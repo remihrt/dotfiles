@@ -93,9 +93,9 @@ fi
 if command -v tmux >/dev/null 2>&1; then
   ta() { tmux attach || tmux new }
 
-  if [[ -z "$TMUX" ]]; then
-    ta
-  fi
+  # if [[ -z "$TMUX" ]]; then
+  #   ta
+  # fi
 fi
 
 # Starship prompt
